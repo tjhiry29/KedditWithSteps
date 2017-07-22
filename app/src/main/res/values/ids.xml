@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="image_thumbnail" type="id" value="2"/>
+    <item name="post_image_thumbnail" type="id" value="3" />
+    <item name="post_title" type="id" value="4" />
+    <item name="post_title_text" type="id" value="5" />
+    <item name="recycler_view" type="id" value="6" />
+    <item name="post_subreddit_text" type="id" value="8" />
+    <item name="post_num_comments" type="id" value="7" />
+</resources>
