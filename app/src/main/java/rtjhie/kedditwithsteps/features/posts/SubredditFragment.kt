@@ -56,7 +56,7 @@ class SubredditFragment : RxBaseFragment(), PostDelegateAdapter.onViewSelectedLi
     }
 
     private fun requestNews() {
-        val subscription = postManager.getPosts(redditPosts?.after ?: "")
+        val subscription = postManager.getPosts(redditPosts?.after ?: "", "", "globaloffensive")
         .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe (

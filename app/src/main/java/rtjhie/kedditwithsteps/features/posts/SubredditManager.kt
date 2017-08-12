@@ -1,9 +1,7 @@
 package rtjhie.kedditwithsteps.features.posts
 
-import rtjhie.kedditwithsteps.api.PostAPI
-import rtjhie.kedditwithsteps.api.RedditChildrenResponse
-import rtjhie.kedditwithsteps.api.RedditDataResponse
-import rtjhie.kedditwithsteps.api.RedditNewsDataResponse
+import retrofit2.Call
+import rtjhie.kedditwithsteps.api.*
 import rtjhie.kedditwithsteps.common.RedditPost
 import rtjhie.kedditwithsteps.common.RedditPosts
 import rx.Observable
@@ -14,10 +12,15 @@ import rx.Observable
 
 class SubredditManager(private val api: PostAPI) {
 
-    fun getPosts(after: String, limit: String = "10"): Observable<RedditPosts> {
+    fun getPosts(after: String, limit: String = "10", subreddit: String = ""): Observable<RedditPosts> {
         return Observable.create {
             subscriber ->
-            val callResponse = api.getPosts(after, limit)
+            var callResponse : Call<RedditNewsResponse>? = null
+            if (subreddit == "") {
+                callResponse = api.getPosts(after, limit)
+            } else {
+                callResponse = api.getPosts(subreddit, after, limit)
+            }
             val response = callResponse.execute()
 
             if (response.isSuccessful) {

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/KedditWithSteps.iml" filepath="$PROJECT_DIR$/KedditWithSteps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Kedditwithsteps.iml" filepath="$PROJECT_DIR$/Kedditwithsteps.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

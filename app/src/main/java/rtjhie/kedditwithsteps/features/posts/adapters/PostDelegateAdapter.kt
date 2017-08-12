@@ -33,7 +33,7 @@ class PostDelegateAdapter() : ViewTypeDelegateAdapter {
 
 }
 
-class PostViewHolder(postView: View) : RecyclerView.ViewHolder(postView) {
+class PostViewHolder(postView: View) : RecyclerView.ViewHolder(postView), PostDelegateAdapter.onViewSelectedListener {
 
     val thumbnailView : ImageView
     val titleView : TextView
@@ -52,6 +52,10 @@ class PostViewHolder(postView: View) : RecyclerView.ViewHolder(postView) {
         subredditView.setText("/r/" + item.subreddit)
         numCommentsView.setText(item.numComments.toString() + "comments")
         Picasso.with(thumbnailView.context).load(item.thumbnail).into(thumbnailView)
+    }
+
+    override fun onItemSelected(url: String?) {
+        // TODO: Create an intent to start an external activity. (Preferably the browser)
     }
 }
 

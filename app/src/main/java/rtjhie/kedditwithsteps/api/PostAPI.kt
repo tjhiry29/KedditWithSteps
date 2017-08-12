@@ -8,4 +8,5 @@ import retrofit2.Call
 
 interface PostAPI {
     fun getPosts(after: String, limit: String): Call<RedditNewsResponse>
+    fun getPosts(subreddit: String, after: String, limit: String): Call<RedditNewsResponse>
 }

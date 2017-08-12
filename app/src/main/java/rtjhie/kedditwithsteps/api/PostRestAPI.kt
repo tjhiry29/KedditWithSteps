@@ -9,6 +9,10 @@ import retrofit2.Call
 class PostRestAPI(private val redditApi: RedditApi) : PostAPI {
 
     override fun getPosts(after: String, limit: String): Call<RedditNewsResponse> {
-        return redditApi.getTop(after, limit)
+        return redditApi.getPosts(after, limit)
+    }
+
+    override fun getPosts(subreddit: String, after: String, limit: String): Call<RedditNewsResponse> {
+        return redditApi.getPosts(subreddit, after, limit)
     }
 }

@@ -2,6 +2,7 @@ package rtjhie.kedditwithsteps.api
 
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -9,8 +10,12 @@ import retrofit2.http.Query
  */
 interface RedditApi {
     @GET("/top.json")
-    fun getTop(@Query("after") after: String,
+    fun getPosts(@Query("after") after: String,
                @Query("limit") limit: String): Call<RedditNewsResponse>
 
+    @GET("/r/{subreddit}.json")
+    fun getPosts(@Path("subreddit") subreddit: String,
+                          @Query("after") after: String,
+                          @Query("limit") limit: String) : Call<RedditNewsResponse>
 }
 
