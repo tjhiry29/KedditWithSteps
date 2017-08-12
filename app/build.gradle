@@ -35,10 +35,10 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //anko
-    compile 'org.jetbrains.anko:anko-sdk15:0.9.1'
-    compile 'org.jetbrains.anko:anko-support-v4:0.9.1'
-    compile 'org.jetbrains.anko:anko-appcompat-v7:0.9.1'
-    compile 'org.jetbrains.anko:anko-recyclerview-v7:0.9.1'
+    compile 'org.jetbrains.anko:anko-sdk23:0.10.1'
+    compile 'org.jetbrains.anko:anko-support-v4:0.10.1'
+    compile 'org.jetbrains.anko:anko-appcompat-v7:0.10.1'
+    compile 'org.jetbrains.anko:anko-recyclerview-v7:0.10.1'
 
     //image loading
     compile 'com.squareup.picasso:picasso:2.5.2'

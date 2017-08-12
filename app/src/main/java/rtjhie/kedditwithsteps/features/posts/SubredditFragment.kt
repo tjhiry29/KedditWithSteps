@@ -36,7 +36,6 @@ class SubredditFragment : RxBaseFragment(), PostDelegateAdapter.onViewSelectedLi
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        postList?.setHasFixedSize(true)
         val linearLayout = LinearLayoutManager(context)
         postList?.layoutManager = linearLayout
         postList?.clearOnScrollListeners()
@@ -83,7 +82,9 @@ class SubredditFragment : RxBaseFragment(), PostDelegateAdapter.onViewSelectedLi
 
         override fun createView(ui: AnkoContext<T>) = with(ui) {
             verticalLayout {
+                lparams(matchParent, matchParent)
                 recyclerView {
+                    lparams(matchParent, matchParent)
                     id = R.id.recycler_view
                     val orientation = LinearLayoutManager.VERTICAL
                     layoutManager = LinearLayoutManager(context, orientation, true)

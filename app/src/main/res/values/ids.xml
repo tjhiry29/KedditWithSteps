@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item name="main_container" type="id" value="1"/>
     <item name="image_thumbnail" type="id" value="2"/>
     <item name="post_image_thumbnail" type="id" value="3" />
     <item name="post_title" type="id" value="4" />
