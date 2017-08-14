@@ -6,6 +6,9 @@
     <item name="post_title" type="id" value="4" />
     <item name="post_title_text" type="id" value="5" />
     <item name="recycler_view" type="id" value="6" />
-    <item name="post_subreddit_text" type="id" value="8" />
     <item name="post_num_comments" type="id" value="7" />
+    <item name="post_subreddit_text" type="id" value="8" />
+    <item name="drawer_container" type="id" value="9"/>
+    <item name="toolbar" type="id" value="10"/>
+    <item name="drawer" type="id">11</item>
 </resources>

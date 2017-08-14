@@ -12,11 +12,11 @@ import rx.Observable
 
 class SubredditManager(private val api: PostAPI) {
 
-    fun getPosts(after: String, limit: String = "10", subreddit: String = ""): Observable<RedditPosts> {
+    fun getPosts(after: String, limit: String = "10", subreddit: String? = null): Observable<RedditPosts> {
         return Observable.create {
             subscriber ->
             var callResponse : Call<RedditNewsResponse>? = null
-            if (subreddit == "") {
+            if (subreddit == null) {
                 callResponse = api.getPosts(after, limit)
             } else {
                 callResponse = api.getPosts(subreddit, after, limit)

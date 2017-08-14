@@ -29,6 +29,7 @@ class SubredditFragment : RxBaseFragment(), PostDelegateAdapter.onViewSelectedLi
     private var redditPosts: RedditPosts? = null
     private var postList: RecyclerView? = null
     private val postManager: SubredditManager = SubredditManager(RestAPI())
+    var subreddit: String? = null
 
     override fun onItemSelected(url: String?) {
         // TODO load comments if no url (text post) or load url.
@@ -49,13 +50,13 @@ class SubredditFragment : RxBaseFragment(), PostDelegateAdapter.onViewSelectedLi
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        val view = SubredditFragmentUi<Fragment>().createView(AnkoContext.create(activity, this))
+        val view = SubredditFragmentUi<Fragment>().createView(AnkoContext.create(context, this, false))
         postList = view.find(R.id.recycler_view)
         return view
     }
 
     private fun requestNews() {
-        val subscription = postManager.getPosts(redditPosts?.after ?: "", "", "globaloffensive")
+        val subscription = postManager.getPosts(redditPosts?.after ?: "", "", subreddit)
         .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe (
