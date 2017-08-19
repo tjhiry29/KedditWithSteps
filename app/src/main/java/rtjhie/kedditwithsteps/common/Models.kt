@@ -29,3 +29,7 @@ data class RedditPosts (
 
 }
 
+data class Subreddit(
+        val displayName: String) {
+}
+

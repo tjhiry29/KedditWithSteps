@@ -1,10 +1,16 @@
 package rtjhie.kedditwithsteps.api
 
+import android.util.JsonReader
+import android.util.Log
+import com.squareup.moshi.Moshi
+import org.json.JSONObject
+import rtjhie.kedditwithsteps.common.RedditPost
+
 /**
  * Created by Ryan Tjhie on 5/28/2017.
  */
 
-class RedditNewsResponse(val data: RedditDataResponse)
+class RedditListResponse(val data: RedditDataResponse)
 
 class RedditDataResponse(
         val children: List<RedditChildrenResponse>,
@@ -12,9 +18,9 @@ class RedditDataResponse(
         val before: String?
 )
 
-class RedditChildrenResponse(val data: RedditNewsDataResponse)
+class RedditChildrenResponse(val kind : String, val data : Map<String, Any>) {}
 
-class RedditNewsDataResponse(
+class RedditPostDataResponse(
         val author: String,
         val title: String,
         val num_comments: Int,
@@ -25,3 +31,27 @@ class RedditNewsDataResponse(
         val upvotes: Int,
         val downvotes: Int
 )
+
+class RedditSubredditDataResponse(
+        val display_name: String,
+        val title: String
+)
+
+class RedditModel(val kind : String, val data : Map<String, Any>) {
+    var postData : RedditPostDataResponse? = null
+    var subredditData : RedditSubredditDataResponse? = null
+
+    init {
+        val moshi = Moshi.Builder().build()
+        val jsonAdapter = moshi.adapter(Map::class.java)
+        val json = jsonAdapter.toJson(data)
+        when (kind) {
+            "t5" -> {
+                subredditData = moshi.adapter(RedditSubredditDataResponse::class.java).fromJson(json)
+            }
+            else -> {
+                postData = moshi.adapter(RedditPostDataResponse::class.java).fromJson(json)
+            }
+        }
+    }
+}

@@ -19,11 +19,15 @@ class RestAPI() : PostAPI{
         redditApi = retrofit.create(RedditApi::class.java)
     }
 
-    override fun getPosts(after: String, limit: String): Call<RedditNewsResponse> {
+    override fun getPosts(after: String, limit: String): Call<RedditListResponse> {
         return redditApi.getPosts(after, limit)
     }
 
-    override fun getPosts(subreddit: String, after: String, limit: String): Call<RedditNewsResponse> {
+    override fun getPosts(subreddit: String, after: String, limit: String): Call<RedditListResponse> {
         return redditApi.getPosts(subreddit, after, limit)
+    }
+
+    override fun getSubreddits(after: String, limit: String): Call<RedditListResponse> {
+        return redditApi.getSubreddits(after, limit)
     }
 }

@@ -1,5 +1,6 @@
 package rtjhie.kedditwithsteps.features.posts
 
+import android.util.Log
 import retrofit2.Call
 import rtjhie.kedditwithsteps.api.*
 import rtjhie.kedditwithsteps.common.RedditPost
@@ -15,7 +16,7 @@ class SubredditManager(private val api: PostAPI) {
     fun getPosts(after: String, limit: String = "10", subreddit: String? = null): Observable<RedditPosts> {
         return Observable.create {
             subscriber ->
-            var callResponse : Call<RedditNewsResponse>? = null
+            var callResponse : Call<RedditListResponse>? = null
             if (subreddit == null) {
                 callResponse = api.getPosts(after, limit)
             } else {
@@ -26,7 +27,7 @@ class SubredditManager(private val api: PostAPI) {
             if (response.isSuccessful) {
                 val dataResponse = response.body().data
                 val posts = dataResponse.children.map {
-                    val item = it.data
+                    val item = RedditModel(it.kind, it.data).postData as RedditPostDataResponse
                     RedditPost(item.author, item.title, item.num_comments, item.created, item.thumbnail,
                             item.url, item.subreddit, item.upvotes, item.downvotes)
                 }
