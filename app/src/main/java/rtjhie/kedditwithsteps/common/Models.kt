@@ -30,6 +30,11 @@ data class RedditPosts (
 }
 
 data class Subreddit(
-        val displayName: String) {
+        val displayName: String,
+        val title: String) {
 }
+
+data class RedditSubreddits(
+        val after: String,
+        val children: List<Subreddit>)
 

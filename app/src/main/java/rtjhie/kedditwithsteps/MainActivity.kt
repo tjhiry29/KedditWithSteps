@@ -11,6 +11,8 @@ import org.jetbrains.anko.appcompat.v7.themedToolbar
 import org.jetbrains.anko.appcompat.v7.toolbar
 import org.jetbrains.anko.support.v4.drawerLayout
 import org.jetbrains.anko.verticalLayout
+import rtjhie.kedditwithsteps.api.RedditApi
+import rtjhie.kedditwithsteps.api.RestAPI
 import rtjhie.kedditwithsteps.features.drawer.DrawerManager
 import rtjhie.kedditwithsteps.features.posts.SubredditFragment
 
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().replace(R.id.main_container, subredditFragment).commit() // move fragment into the above vertical layout.
         setSupportActionBar(mainActivityUi.find(R.id.toolbar))
 
-        drawerManager = DrawerManager(mainActivityUi.find(R.id.drawer_container), subredditFragment)
+        drawerManager = DrawerManager(mainActivityUi.find(R.id.drawer_container), subredditFragment, RestAPI())
         drawerManager.initDrawer()
 
     }

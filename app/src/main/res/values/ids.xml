@@ -10,5 +10,7 @@
     <item name="post_subreddit_text" type="id" value="8" />
     <item name="drawer_container" type="id" value="9"/>
     <item name="toolbar" type="id" value="10"/>
-    <item name="drawer" type="id">11</item>
+    <item name="drawer" type="id" value="11"/>
+    <item name="drawer_subreddit_list" type="id" value="12"/>
+    <item name="subreddit_list_title" type="id" value="13"/>
 </resources>
